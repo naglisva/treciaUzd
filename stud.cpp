@@ -24,13 +24,14 @@ void stud()
 		cout << "Iveskite egzamina: ";
 		cin >> Laik.egz;
 		Laik.vgrez = vidurkis(Laik.paz)*0.6 + Laik.egz*0.4;
+		Laik.mgrez = mediana(Laik.paz) * 0.6 + Laik.egz * 0.4;
 		grupe.push_back(Laik);
 		Laik.paz.clear();
 	}
-	printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis(Vid.)");
+	printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis(Med.)");
 	printf("|--------------------|--------------------|--------------------|\n");
 	for (auto& a : grupe)
-		printf("|%20s|%20s|%20.2f|\n",a.vard.c_str(),a.pav.c_str(),a.vgrez);
+		printf("|%20s|%20s|%20.2f|\n",a.vard.c_str(),a.pav.c_str(),a.mgrez);
 	printf("|--------------------|--------------------|--------------------|\n");
 }
 

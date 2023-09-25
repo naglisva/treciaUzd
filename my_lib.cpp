@@ -15,3 +15,24 @@ float vidurkis(vector<int> vekt)
 
 }
 
+double mediana(vector<int> vekt)
+{
+	size_t size = vekt.size();
+
+	if (size == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		sort(vekt.begin(), vekt.end());
+		if (size % 2 == 0)
+		{
+			return static_cast<float>((vekt[size / 2 - 1] + vekt[size / 2])) / 2;
+		}
+		else
+		{
+			return vekt[size / 2];
+		}
+	}
+}
