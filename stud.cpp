@@ -10,16 +10,30 @@ void stud()
 	for (int j = 0; j < z; j++) {
 		cout << "Iveskite varda ir pavarde: ";
 		cin >> Laik.vard >> Laik.pav;
-		cout << "Kiek pazymiu turi studentas: ";
-		int n;
-		cin >> n;
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		int i = 0;
-		for (int i = 0; i < n; i++) {
-			int k;
-			cout << "Iveskite " << i + 1 << " pazymi: ";
-			cin >> k;
-			Laik.paz.push_back(k);
+		while (true) {
+			try {
+				int k;
+				string input;
+				cout << "Iveskite " << i + 1 << " pazymi: ";
+				getline(cin, input);
+				if (input.empty()) {
+					cout << "Daugiau pazymiu ivesta nebuvo\n";
+					break;
+				}
+				stringstream ss(input);
+				if (!(ss >> k)) {
+					cout << "Failed to convert input to integer, breaking loop.\n";
+					break;
+				}
+				Laik.paz.push_back(k);
+				i++;
+			}
+			catch (const std::exception& e) {
+				cout << "Caught exception: " << e.what() << '\n';
+				break;
+			}
 		}
 		cout << "Iveskite egzamina: ";
 		cin >> Laik.egz;
