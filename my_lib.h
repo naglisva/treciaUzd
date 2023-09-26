@@ -11,6 +11,7 @@
 #include <cstdio>
 #include <random>
 #include <iterator>
+#include <fstream>
 
 using std::cout;
 using std::string;
@@ -30,6 +31,7 @@ using std::exception;
 using std::numeric_limits;
 using std::streamsize;
 using std::stringstream;
+using std::ifstream;
 
 struct studentas {
 	string vard, pav;
