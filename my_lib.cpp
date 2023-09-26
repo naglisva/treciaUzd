@@ -36,3 +36,16 @@ double mediana(vector<int> vekt)
 		}
 	}
 }
+
+vector <int> random(int n)
+{
+	random_device rnd_device;
+	mt19937 mersenne_engine{ rnd_device() };
+	uniform_int_distribution<int> dist{ 1, 10 };
+	auto gen = [&dist, &mersenne_engine]() {
+		return dist(mersenne_engine);
+		};
+	vector<int> vec(n);
+	generate(begin(vec), end(vec), gen);
+	return vec;
+}
