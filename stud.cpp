@@ -32,6 +32,17 @@ int nuskaitymas() {
 	ifstream file("kursiokai.txt.txt");
 	vector<studentas> mokiniai;
 	studentas Laik;
+
+	if (!file.is_open()) {
+		perror(("Error while opening file " + string("C:/Users/nagli/source/repos/Project1/kursiokai.txt")).c_str());
+		exit(EXIT_FAILURE);
+	}
+
+	if (!file) {
+		cout << "Unable to open file kursiokai.txt";
+		return 1; 
+	}
+
 	string dummyLine;
 	getline(file, dummyLine);
 	while (file >> Laik.pav >> Laik.vard) {
