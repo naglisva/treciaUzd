@@ -46,12 +46,20 @@ int nuskaitymas() {
 	string dummyLine;
 	getline(file, dummyLine);
 	while (file >> Laik.pav >> Laik.vard) {
-		for (int i = 0; i < 5; ++i) {
-			int nd;
-			file >> nd;
+		string line;
+		getline(file, line);
+		istringstream iss(line);
+		int nd;
+		while (iss >> nd) {
 			Laik.paz.push_back(nd);
+			if (iss.peek() == ' ') {
+				iss.ignore();
+			}
+			else {
+				break;
+			}
 		}
-		file >> Laik.egz;
+		Laik.egz = nd;
 		Laik.mgrez = mediana(Laik.paz) * 0.6 + Laik.egz * 0.4;
 		mokiniai.push_back(Laik);
 		Laik.paz.clear();

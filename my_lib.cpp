@@ -2,7 +2,7 @@
 
 float vidurkis(vector<int> vekt)
 {
-	size_t size = vekt.size();
+	size_t size = vekt.size()-1;
 
 	if (size == 0)
 	{
@@ -17,7 +17,7 @@ float vidurkis(vector<int> vekt)
 
 double mediana(vector<int> vekt)
 {
-	size_t size = vekt.size();
+	size_t size = vekt.size()-1;
 
 	if (size == 0)
 	{

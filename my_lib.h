@@ -32,6 +32,7 @@ using std::numeric_limits;
 using std::streamsize;
 using std::stringstream;
 using std::ifstream;
+using std::istringstream;
 
 struct studentas {
 	string vard, pav;
