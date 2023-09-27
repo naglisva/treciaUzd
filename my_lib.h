@@ -44,7 +44,6 @@ struct studentas {
 };
 
 int nuskaitymas();
-//void stud();
 double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
 vector <int> random(int n);

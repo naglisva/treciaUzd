@@ -2,7 +2,7 @@
 
 float vidurkis(vector<int> vekt)
 {
-	size_t size = vekt.size()-1;
+	size_t size = vekt.size();
 
 	if (size == 0)
 	{
@@ -17,7 +17,7 @@ float vidurkis(vector<int> vekt)
 
 double mediana(vector<int> vekt)
 {
-	size_t size = vekt.size()-1;
+	size_t size = vekt.size();
 
 	if (size == 0)
 	{
@@ -28,7 +28,7 @@ double mediana(vector<int> vekt)
 		sort(vekt.begin(), vekt.end());
 		if (size % 2 == 0)
 		{
-			return static_cast<float>((vekt[size / 2 - 1] + vekt[size / 2])) / 2;
+			return static_cast<float>(vekt[((size / 2) -1)] + vekt[size / 2]) / 2;
 		}
 		else
 		{
