@@ -49,3 +49,4 @@ vector <int> random(int n)
 	generate(begin(vec), end(vec), gen);
 	return vec;
 }
+
