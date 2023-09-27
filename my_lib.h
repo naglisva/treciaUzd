@@ -33,6 +33,7 @@ using std::streamsize;
 using std::stringstream;
 using std::ifstream;
 using std::istringstream;
+using std::sort;
 
 struct studentas {
 	string vard, pav;
@@ -47,3 +48,4 @@ int nuskaitymas();
 double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
 vector <int> random(int n);
+bool pagalvarda(const studentas& a, const studentas& b);

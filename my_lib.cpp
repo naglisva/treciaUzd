@@ -50,3 +50,7 @@ vector <int> random(int n)
 	return vec;
 }
 
+bool pagalvarda(const studentas& a, const studentas& b) {
+	return a.vard < b.vard;
+}
+

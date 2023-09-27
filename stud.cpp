@@ -67,6 +67,8 @@ int nuskaitymas() {
 
 	file.close();
 
+	sort(mokiniai.begin(), mokiniai.end(), pagalvarda);
+
 	printf("|%20s|%20s|%20s|\n", "Vardas", "Pavarde", "Galutinis(Med.)");
 	printf("|--------------------|--------------------|--------------------|\n");
 	for (auto& a : mokiniai)
