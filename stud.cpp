@@ -6,7 +6,7 @@ int nuskaitymas() {
 	studentas Laik;
 
 	if (!file.is_open()) {
-		perror(("Klaida atidarant faila " + string("C:/Users/nagli/source/repos/Project1/kursiokai.txt")).c_str());
+		perror(("Klaida atidarant faila " + string("kursiokai.txt.txt")).c_str());
 		exit(EXIT_FAILURE);
 	}
 
