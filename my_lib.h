@@ -12,6 +12,8 @@
 #include <random>
 #include <iterator>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 using std::cout;
 using std::string;
@@ -34,6 +36,11 @@ using std::stringstream;
 using std::ifstream;
 using std::istringstream;
 using std::sort;
+using std::srand;
+using std::time;
+using std::ofstream;
+using std::rand;
+
 
 struct studentas {
 	string vard, pav;
@@ -48,3 +55,4 @@ double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
 vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
+void generatorius(int x, string pavadinimas);

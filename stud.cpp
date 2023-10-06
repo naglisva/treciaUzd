@@ -1,6 +1,5 @@
 #include "my_lib.h"
-
-
+/*
 int nuskaitymas() {
 	ifstream file("kursiokai.txt.txt");
 	vector<studentas> mokiniai;
@@ -47,5 +46,19 @@ int nuskaitymas() {
 	printf("|--------------------|--------------------|--------------------|\n");
 
 	return 0;
-}
+}*/
 
+void generatorius(int x, string pavadinimas) {
+	srand(time(nullptr));
+	ofstream file(pavadinimas);
+
+	for (int n = 1; n <= x; ++n) {
+		file << "vard(" << n << ") pav(" << n << ")";
+		for (int i = 0; i < 8; ++i) {
+			file << "  " << (rand() % 10 + 1);
+		}
+		file << "\n";
+	}
+
+	file.close();
+}
