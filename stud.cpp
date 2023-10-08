@@ -73,44 +73,81 @@ void generatorius(int x, string pavadinimas) {
 
 
 void skirstymas(string pavadinimas, string naujas1, string naujas2) {
-	ifstream inputfile(pavadinimas);
-	ofstream outputfile1(naujas1);
-	ofstream outputfile2(naujas2);
-	vector<studentas> mokiniai;
-	mokiniai.reserve(10000001);
+    ifstream inputfile(pavadinimas);
+    ofstream outputfile1(naujas1);
+    ofstream outputfile2(naujas2);
+    vector<studentas> mokiniai;
+    mokiniai.reserve(10000001);
 
-	string line;
-	while (getline(inputfile, line)) {
-		istringstream iss(line);
-		studentas Laik;
-		iss >> Laik.pav >> Laik.vard;
-		int nd;
-		vector<int> temp;
-		while (iss >> nd) {
-			temp.push_back(nd);
-		}
-		for (int i = 0; i < temp.size() - 1; i++) {
-			Laik.paz.push_back(temp[i]);
-		}
-		Laik.egz = temp.back();
-		Laik.mgrez = mediana(Laik.paz) * 0.4 + Laik.egz * 0.6;
-		if (Laik.mgrez < 5) {
-			Laik.vert = "blogai";
-			outputfile2 << Laik.pav << " " << Laik.vard << " ";
-			for (auto& paz : Laik.paz) {
-				outputfile2 << paz << " ";
-			}
-			outputfile2 << Laik.egz << " " << Laik.vert << endl;
-		}
-		else {
-			Laik.vert = "gerai";
-			outputfile1 << Laik.pav << " " << Laik.vard << " ";
-			for (auto& paz : Laik.paz) {
-				outputfile1 << paz << " ";
-			}
-			outputfile1 << Laik.egz << " " << Laik.vert << endl;
-		}
+    string line;
 
-		mokiniai.push_back(move(Laik));
-	}
+    auto start_total = high_resolution_clock::now(); 
+    microseconds read_duration(0);
+    microseconds calc_duration(0);
+    microseconds write_duration(0);
+
+    while (getline(inputfile, line)) {
+        auto start_line_read = high_resolution_clock::now(); 
+        istringstream iss(line);
+        studentas Laik;
+        iss >> Laik.pav >> Laik.vard;
+        int nd;
+        vector<int> temp;
+        while (iss >> nd) {
+            temp.push_back(nd);
+        }
+        for (int i = 0; i < temp.size() - 1; i++) {
+            Laik.paz.push_back(temp[i]);
+        }
+        Laik.egz = temp.back();
+        auto end_line_read = high_resolution_clock::now(); 
+
+        auto start_calc = high_resolution_clock::now(); 
+        Laik.mgrez = mediana(Laik.paz) * 0.4 + Laik.egz * 0.6;
+        auto end_calc = high_resolution_clock::now(); 
+
+        auto start_write = high_resolution_clock::now(); 
+        if (Laik.mgrez < 5) {
+            Laik.vert = "blogai";
+            outputfile2 << Laik.pav << " " << Laik.vard << " ";
+            for (auto& paz : Laik.paz) {
+                outputfile2 << paz << " ";
+            }
+            outputfile2 << Laik.egz << " " << Laik.vert << endl;
+        }
+        else {
+            Laik.vert = "gerai";
+            outputfile1 << Laik.pav << " " << Laik.vard << " ";
+            for (auto& paz : Laik.paz) {
+                outputfile1 << paz << " ";
+            }
+            outputfile1 << Laik.egz << " " << Laik.vert << endl;
+        }
+        auto end_write = high_resolution_clock::now(); 
+
+        mokiniai.push_back(move(Laik));
+
+        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
+        calc_duration += duration_cast<microseconds>(end_calc - start_calc);
+        write_duration += duration_cast<microseconds>(end_write - start_write);
+    }
+
+    auto end_total = high_resolution_clock::now(); 
+
+    cout << "Visas eilutes nuskaityt uztruko: "
+        << double(read_duration.count())/1000000
+        << " sek."
+        << endl;
+    cout << "Visus rezultatus suskaiciuot uztruko: "
+        << double(calc_duration.count())/1000000
+        << " sek."
+        << endl;
+    cout << "Informacija i failus isskirstyt uztruko: "
+        << double(write_duration.count())/1000000
+        << " sek."
+        << endl;
+    cout << "Visas procesas uztruko: "
+        << double(duration_cast<std::chrono::microseconds>(end_total - start_total).count())/1000000
+        << " sek."
+        << endl;
 }

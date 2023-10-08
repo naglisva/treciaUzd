@@ -46,6 +46,8 @@ using std::srand;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
 using std::chrono::seconds;
+using std::chrono::microseconds;
+
 
 
 struct studentas {
