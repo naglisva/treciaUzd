@@ -62,3 +62,43 @@ void generatorius(int x, string pavadinimas) {
 
 	file.close();
 }
+
+
+void skirstymas(string pavadinimas, string naujas) {
+	ifstream inputfile(pavadinimas);
+	ofstream outputfile(naujas);
+	vector<studentas> mokiniai;
+	mokiniai.reserve(10000001);
+
+	string line;
+	while (getline(inputfile, line)) {
+		istringstream iss(line);
+		studentas Laik;
+		iss >> Laik.pav >> Laik.vard;
+		int nd;
+		vector<int> temp;
+		while (iss >> nd) {
+			temp.push_back(nd);
+		}
+		for (int i = 0; i < temp.size() - 1; i++) {
+			Laik.paz.push_back(temp[i]);
+		}
+		Laik.egz = temp.back();
+		Laik.mgrez = mediana(Laik.paz) * 0.4 + Laik.egz * 0.6;
+		if (Laik.mgrez < 5) {
+			Laik.vert = "blogai";
+		}
+		else {
+			Laik.vert = "gerai";
+		}
+		mokiniai.push_back(move(Laik));
+	}
+
+	for (auto& mok : mokiniai) {
+		outputfile << mok.pav << " " << mok.vard << " ";
+		for (auto& paz : mok.paz) {
+			outputfile << paz << " ";
+		}
+		outputfile << mok.egz << " " << mok.vert << endl;
+	}
+}

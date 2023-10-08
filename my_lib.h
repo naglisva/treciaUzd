@@ -40,6 +40,7 @@ using std::srand;
 using std::time;
 using std::ofstream;
 using std::rand;
+using std::move;
 
 
 struct studentas {
@@ -48,6 +49,7 @@ struct studentas {
 	int egz;
 	float vgrez;
 	float mgrez;
+	string vert;
 };
 
 int nuskaitymas();
@@ -56,3 +58,4 @@ float vidurkis(vector<int> vekt);
 vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
 void generatorius(int x, string pavadinimas);
+void skirstymas(string pavadinimas, string naujas);
