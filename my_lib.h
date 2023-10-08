@@ -58,4 +58,4 @@ float vidurkis(vector<int> vekt);
 vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
 void generatorius(int x, string pavadinimas);
-void skirstymas(string pavadinimas, string naujas);
+void skirstymas(string pavadinimas, string naujas1, string naujas2);

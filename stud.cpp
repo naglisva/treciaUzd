@@ -64,9 +64,10 @@ void generatorius(int x, string pavadinimas) {
 }
 
 
-void skirstymas(string pavadinimas, string naujas) {
+void skirstymas(string pavadinimas, string naujas1, string naujas2) {
 	ifstream inputfile(pavadinimas);
-	ofstream outputfile(naujas);
+	ofstream outputfile1(naujas1);
+	ofstream outputfile2(naujas2);
 	vector<studentas> mokiniai;
 	mokiniai.reserve(10000001);
 
@@ -87,18 +88,21 @@ void skirstymas(string pavadinimas, string naujas) {
 		Laik.mgrez = mediana(Laik.paz) * 0.4 + Laik.egz * 0.6;
 		if (Laik.mgrez < 5) {
 			Laik.vert = "blogai";
+			outputfile2 << Laik.pav << " " << Laik.vard << " ";
+			for (auto& paz : Laik.paz) {
+				outputfile2 << paz << " ";
+			}
+			outputfile2 << Laik.egz << " " << Laik.vert << endl;
 		}
 		else {
 			Laik.vert = "gerai";
+			outputfile1 << Laik.pav << " " << Laik.vard << " ";
+			for (auto& paz : Laik.paz) {
+				outputfile1 << paz << " ";
+			}
+			outputfile1 << Laik.egz << " " << Laik.vert << endl;
 		}
-		mokiniai.push_back(move(Laik));
-	}
 
-	for (auto& mok : mokiniai) {
-		outputfile << mok.pav << " " << mok.vard << " ";
-		for (auto& paz : mok.paz) {
-			outputfile << paz << " ";
-		}
-		outputfile << mok.egz << " " << mok.vert << endl;
+		mokiniai.push_back(move(Laik));
 	}
 }
