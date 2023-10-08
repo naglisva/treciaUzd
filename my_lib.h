@@ -14,6 +14,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 
 using std::cout;
 using std::string;
@@ -41,6 +42,10 @@ using std::time;
 using std::ofstream;
 using std::rand;
 using std::move;
+using std::srand;
+using std::chrono::high_resolution_clock;
+using std::chrono::duration_cast;
+using std::chrono::seconds;
 
 
 struct studentas {

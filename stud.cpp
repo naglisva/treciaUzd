@@ -52,6 +52,8 @@ void generatorius(int x, string pavadinimas) {
 	srand(time(nullptr));
 	ofstream file(pavadinimas);
 
+	auto start = high_resolution_clock::now();
+
 	for (int n = 1; n <= x; ++n) {
 		file << "vard(" << n << ") pav(" << n << ")";
 		for (int i = 0; i < 8; ++i) {
@@ -59,6 +61,12 @@ void generatorius(int x, string pavadinimas) {
 		}
 		file << "\n";
 	}
+
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<seconds>(stop - start);
+
+	cout << "Faila sukurt uztruko: "
+		<< duration.count() << " sek." << endl;
 
 	file.close();
 }
