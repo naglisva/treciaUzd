@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
+#include <list>
 
 using std::cout;
 using std::string;
@@ -47,6 +48,7 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
 using std::chrono::seconds;
 using std::chrono::microseconds;
+using std::list;
 
 
 
@@ -59,6 +61,7 @@ struct studentas {
 	string vert;
 };
 
+
 int nuskaitymas();
 double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
@@ -66,3 +69,4 @@ vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
 void generatorius(int x, string pavadinimas);
 void skirstymas(string pavadinimas, string naujas1, string naujas2);
+void skirstymas2(string pavadinimas, string naujas1, string naujas2);

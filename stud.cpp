@@ -54,6 +54,8 @@ void generatorius(int x, string pavadinimas) {
 
 	auto start = high_resolution_clock::now();
 
+    file << "Vardas  Pavarde  Pazymiai" <<endl;
+
 	for (int n = 1; n <= x; ++n) {
 		file << "vard(" << n << ") pav(" << n << ")";
 		for (int i = 0; i < 8; ++i) {
@@ -78,6 +80,12 @@ void skirstymas(string pavadinimas, string naujas1, string naujas2) {
     ofstream outputfile2(naujas2);
     vector<studentas> mokiniai;
     mokiniai.reserve(10000001);
+
+    outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
+    outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
+    
+    string dummyLine;
+	getline(inputfile, dummyLine);
 
     string line;
 
@@ -108,20 +116,10 @@ void skirstymas(string pavadinimas, string naujas1, string naujas2) {
 
         auto start_write = high_resolution_clock::now(); 
         if (Laik.mgrez < 5) {
-            Laik.vert = "blogai";
-            outputfile2 << Laik.pav << " " << Laik.vard << " ";
-            for (auto& paz : Laik.paz) {
-                outputfile2 << paz << " ";
-            }
-            outputfile2 << Laik.egz << " " << Laik.vert << endl;
+            outputfile2 << Laik.pav << " " << Laik.vard << "   " << Laik.mgrez << endl;
         }
         else {
-            Laik.vert = "gerai";
-            outputfile1 << Laik.pav << " " << Laik.vard << " ";
-            for (auto& paz : Laik.paz) {
-                outputfile1 << paz << " ";
-            }
-            outputfile1 << Laik.egz << " " << Laik.vert << endl;
+            outputfile1 << Laik.pav << " " << Laik.vard << "   " << Laik.mgrez << endl;
         }
         auto end_write = high_resolution_clock::now(); 
 
