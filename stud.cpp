@@ -114,6 +114,16 @@ void skirstymas(string pavadinimas, string naujas1, string naujas2) {
         Laik.mgrez = mediana(Laik.paz) * 0.4 + Laik.egz * 0.6;
         auto end_calc = high_resolution_clock::now(); 
 
+        mokiniai.push_back(move(Laik));
+
+        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
+        calc_duration += duration_cast<microseconds>(end_calc - start_calc);
+    }
+
+    
+    sort(mokiniai.begin(), mokiniai.end(), pagalrez);
+
+    for (const auto& Laik : mokiniai) {
         auto start_write = high_resolution_clock::now(); 
         if (Laik.mgrez < 5) {
             outputfile2 << Laik.pav << " " << Laik.vard << "   " << Laik.mgrez << endl;
@@ -122,11 +132,6 @@ void skirstymas(string pavadinimas, string naujas1, string naujas2) {
             outputfile1 << Laik.pav << " " << Laik.vard << "   " << Laik.mgrez << endl;
         }
         auto end_write = high_resolution_clock::now(); 
-
-        mokiniai.push_back(move(Laik));
-
-        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
-        calc_duration += duration_cast<microseconds>(end_calc - start_calc);
         write_duration += duration_cast<microseconds>(end_write - start_write);
     }
 

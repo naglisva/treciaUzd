@@ -67,6 +67,7 @@ double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
 vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
+bool pagalrez(const studentas& a, const studentas& b);
 void generatorius(int x, string pavadinimas);
 void skirstymas(string pavadinimas, string naujas1, string naujas2);
 void skirstymas2(string pavadinimas, string naujas1, string naujas2);

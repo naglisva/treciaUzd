@@ -54,3 +54,6 @@ bool pagalvarda(const studentas& a, const studentas& b) {
 	return a.vard < b.vard;
 }
 
+bool pagalrez(const studentas& a, const studentas& b) {
+	return a.mgrez < b.mgrez;
+}
