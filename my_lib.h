@@ -17,6 +17,7 @@
 #include <chrono>
 #include <list>
 
+
 using std::cout;
 using std::string;
 using std::cin;
@@ -49,7 +50,8 @@ using std::chrono::duration_cast;
 using std::chrono::seconds;
 using std::chrono::microseconds;
 using std::list;
-
+using std::next;
+using std::is_same_v;
 
 
 struct studentas {
@@ -60,6 +62,47 @@ struct studentas {
 	float mgrez;
 	string vert;
 };
+struct studentas2 {
+	string vard, pav;
+	list <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
+template<typename T>
+double mediana2(T vekt)
+{
+    size_t size = vekt.size();
+
+    if (size == 0)
+    {
+        return 0;  
+    }
+    else
+    {
+        if constexpr (is_same_v<T, vector<typename T::value_type>>) 
+        {
+            sort(vekt.begin(), vekt.end());
+        } 
+        else if constexpr (is_same_v<T, list<typename T::value_type>>) 
+        {
+            vekt.sort();
+        }
+
+        if (size % 2 == 0)
+        {
+            auto it = next(vekt.begin(), size / 2 - 1);
+            return static_cast<double>(*it + *(++it)) / 2;
+        }
+        else
+        {
+            return *next(vekt.begin(), size / 2);
+        }
+    }
+}
+
 
 
 int nuskaitymas();
@@ -68,6 +111,8 @@ float vidurkis(vector<int> vekt);
 vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
 bool pagalrez(const studentas& a, const studentas& b);
+bool pagalrez2(const studentas2& a, const studentas2& b);
 void generatorius(int x, string pavadinimas);
 void skirstymas(string pavadinimas, string naujas1, string naujas2);
 void skirstymas2(string pavadinimas, string naujas1, string naujas2);
+

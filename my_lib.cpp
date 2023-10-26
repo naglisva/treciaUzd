@@ -37,6 +37,7 @@ double mediana(vector<int> vekt)
 	}
 }
 
+
 vector <int> random(int n)
 {
 	random_device rnd_device;
@@ -54,6 +55,11 @@ bool pagalvarda(const studentas& a, const studentas& b) {
 	return a.vard < b.vard;
 }
 
+
 bool pagalrez(const studentas& a, const studentas& b) {
+	return a.mgrez < b.mgrez;
+}
+
+bool pagalrez2(const studentas2& a, const studentas2& b) {
 	return a.mgrez < b.mgrez;
 }
