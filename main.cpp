@@ -26,4 +26,11 @@ int main() {
 	nskirstymas("trecias2.txt", "nblogi3v.txt");
 	nskirstymas("ketvirtas2.txt", "nblogi4v.txt");
 	nskirstymas("penktas2.txt", "nblogi5v.txt");
+
+	cout << "Naudojant sarasa, 2 strategija " << endl;
+	nskirstymas2("pirmas3.txt", "nblogi1l.txt");
+	nskirstymas2("antras3.txt", "nblogi2l.txt");
+	nskirstymas2("trecias3.txt", "nblogi3l.txt");
+	nskirstymas2("ketvirtas3.txt", "nblogi4l.txt");
+	nskirstymas2("penktas3.txt", "nblogi5l.txt");
 }
