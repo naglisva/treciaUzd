@@ -115,4 +115,4 @@ bool pagalrez2(const studentas2& a, const studentas2& b);
 void generatorius(int x, string pavadinimas);
 void skirstymas(string pavadinimas, string naujas1, string naujas2);
 void skirstymas2(string pavadinimas, string naujas1, string naujas2);
-
+void nskirstymas(string pavadinimas, string naujas1);
