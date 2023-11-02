@@ -82,6 +82,17 @@ struct studentas2 {
 	string vert;
 };
 
+struct studentas3 {
+	string vard, pav;
+	vector <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
+std::ostream& operator<<(std::ostream& os, const studentas3& s);
+
 template<typename T>
 double mediana2(T vekt)
 {
@@ -123,8 +134,12 @@ vector <int> random(int n);
 bool pagalvarda(const studentas& a, const studentas& b);
 bool pagalrez(const studentas& a, const studentas& b);
 bool pagalrez2(const studentas2& a, const studentas2& b);
+bool rezultatas(const studentas& a);
 void generatorius(int x, string pavadinimas);
 void skirstymas(string pavadinimas, string naujas1, string naujas2);
 void skirstymas2(string pavadinimas, string naujas1, string naujas2);
 void nskirstymas(string pavadinimas, string naujas1);
 void nskirstymas2(string pavadinimas, string naujas1);
+void nskirstymasv(string pavadinimas, string naujas1);
+bool rezultatas3(const studentas3& a);
+bool pagalrez3(const studentas3& a, const studentas3& b);

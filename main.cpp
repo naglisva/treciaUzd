@@ -5,7 +5,7 @@ int main() {
 	//generatorius(100000,"trecias.txt");
 	//generatorius(1000000,"ketvirtas.txt");
 	//generatorius(10000000,"penktas.txt");
-	
+	/*
 	cout << "Naudojant sarasa " << endl;
 	skirstymas2("pirmas.txt","geri1.txt", "blogi1.txt");
 	skirstymas2("antras.txt", "geri2.txt", "blogi2.txt");
@@ -37,8 +37,13 @@ int main() {
 	nskirstymas2("ketvirtas3.txt", "nblogi4l.txt");
 	nskirstymas2("penktas3.txt", "nblogi5l.txt");
 	cout << endl;
-
+	*/
 	cout << "Naudojant vektoriu, 3 strategija " << endl;
+	nskirstymasv("pirmas3.txt", "nblogi1v.txt");
+	nskirstymasv("antras3.txt", "nblogi2v.txt");
+	nskirstymasv("trecias3.txt", "nblogi3v.txt");
+	nskirstymasv("ketvirtas3.txt", "nblogi4v.txt");
+	nskirstymasv("penktas3.txt", "nblogi5v.txt");
 	cout << endl;
 
 	cout << "Naudojant sarasa, 3 strategija " << endl;

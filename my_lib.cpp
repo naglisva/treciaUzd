@@ -60,6 +60,18 @@ bool pagalrez(const studentas& a, const studentas& b) {
 	return a.mgrez < b.mgrez;
 }
 
+bool pagalrez3(const studentas3& a, const studentas3& b) {
+	return a.mgrez < b.mgrez;
+}
+
 bool pagalrez2(const studentas2& a, const studentas2& b) {
 	return a.mgrez < b.mgrez;
+}
+
+bool rezultatas(const studentas& a) {
+	return a.mgrez >= 5;
+}
+
+bool rezultatas3(const studentas3& a) {
+	return a.mgrez >= 5;
 }

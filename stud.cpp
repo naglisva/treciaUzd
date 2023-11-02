@@ -348,3 +348,87 @@ void nskirstymas2(string pavadinimas, string naujas1) {
          << endl;
 }
 
+
+
+std::ostream& operator<<(std::ostream& os, const studentas3& s) {
+    os << s.pav << " " << s.vard << "   " << s.mgrez;
+    return os;
+}
+
+void nskirstymasv(string pavadinimas, string naujas1) {
+    ifstream inputfile(pavadinimas);
+    ofstream outputfile1(naujas1);
+    vector<studentas3> mokiniai;
+
+
+    outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
+    
+    string dummyLine;
+	getline(inputfile, dummyLine);
+
+    string line;
+
+    auto start_total = high_resolution_clock::now(); 
+    microseconds read_duration(0);
+    microseconds calc_duration(0);
+    microseconds write_duration(0);
+
+    while (getline(inputfile, line)) {
+        auto start_line_read = high_resolution_clock::now(); 
+        istringstream iss(line);
+        studentas3 Laik;
+        iss >> Laik.pav >> Laik.vard;
+        int nd;
+        vector<int> temp;
+        while (iss >> nd) {
+            temp.push_back(nd);
+        }
+        for (auto it = temp.begin(); it != prev(temp.end()); ++it) {
+            Laik.paz.push_back(*it);
+        }
+        Laik.egz = temp.back();
+        auto end_line_read = high_resolution_clock::now(); 
+
+        auto start_calc = high_resolution_clock::now(); 
+        Laik.mgrez = mediana2(Laik.paz) * 0.4 + Laik.egz * 0.6;
+        auto end_calc = high_resolution_clock::now(); 
+
+        mokiniai.push_back(move(Laik));
+
+        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
+        calc_duration += duration_cast<microseconds>(end_calc - start_calc);
+    }
+
+    std::sort(mokiniai.begin(), mokiniai.end(),  pagalrez3);
+
+    auto partition_point = std::stable_partition(mokiniai.begin(), mokiniai.end(), rezultatas3);
+
+    ofstream outputfile(pavadinimas); 
+    outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
+
+    std::copy(mokiniai.begin(), partition_point, std::ostream_iterator<studentas3>(outputfile1, "\n"));
+
+    std::copy(partition_point, mokiniai.end(), std::ostream_iterator<studentas3>(outputfile, "\n"));
+
+    auto end_total = high_resolution_clock::now(); 
+
+    cout << "Visas eilutes nuskaityt uztruko: "
+         << double(read_duration.count())/1000000
+         << " sek."
+         << endl;
+    cout << "Visus rezultatus suskaiciuot uztruko: "
+         << double(calc_duration.count())/1000000
+         << " sek."
+         << endl;
+    cout << "Informacija i failus isskirstyt uztruko: "
+         << double(write_duration.count())/1000000
+         << " sek."
+         << endl;
+    cout << "Visas procesas uztruko: "
+         << double(duration_cast<std::chrono::microseconds>(end_total - start_total).count())/1000000
+         << " sek."
+         << endl;
+}
+
+
+
