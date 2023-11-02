@@ -52,6 +52,17 @@ using std::chrono::microseconds;
 using std::list;
 using std::next;
 using std::is_same_v;
+using std::find;
+using std::find_if;
+using std::search;
+using std::copy;
+using std::remove;
+using std::remove_if;
+using std::remove_copy;
+using std::remove_copy_if;
+using std::transform;
+using std::partition;
+using std::stable_partition;
 
 
 struct studentas {
