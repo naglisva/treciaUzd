@@ -347,3 +347,4 @@ void nskirstymas2(string pavadinimas, string naujas1) {
          << " sek."
          << endl;
 }
+
