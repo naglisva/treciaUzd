@@ -26,8 +26,6 @@ void generatorius(int x, string pavadinimas) {
 	file.close();
 }
 
-
-
 void skirstymas2(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
@@ -109,8 +107,6 @@ void skirstymas2(string pavadinimas, string naujas1, string naujas2) {
         << endl;
 }
 
-
-
 void skirstymas(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
@@ -191,8 +187,6 @@ void skirstymas(string pavadinimas, string naujas1, string naujas2) {
         << " sek."
         << endl;
 }
-
-
 
 void nskirstymas(string pavadinimas, string naujas1) {
     ifstream inputfile(pavadinimas);
