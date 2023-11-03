@@ -399,16 +399,16 @@ void nskirstymasv(string pavadinimas, string naujas1) {
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
-    std::sort(mokiniai.begin(), mokiniai.end(),  pagalrez3);
+    sort(mokiniai.begin(), mokiniai.end(),  pagalrez3);
 
-    auto partition_point = std::stable_partition(mokiniai.begin(), mokiniai.end(), rezultatas3);
+    auto partition_point = stable_partition(mokiniai.begin(), mokiniai.end(), rezultatas3);
 
     ofstream outputfile(pavadinimas); 
     outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
 
-    std::copy(mokiniai.begin(), partition_point, std::ostream_iterator<studentas3>(outputfile1, "\n"));
+    copy(mokiniai.begin(), partition_point, ostream_iterator<studentas3>(outputfile1, "\n"));
 
-    std::copy(partition_point, mokiniai.end(), std::ostream_iterator<studentas3>(outputfile, "\n"));
+    copy(partition_point, mokiniai.end(), ostream_iterator<studentas3>(outputfile, "\n"));
 
     auto end_total = high_resolution_clock::now(); 
 
@@ -429,6 +429,9 @@ void nskirstymasv(string pavadinimas, string naujas1) {
          << " sek."
          << endl;
 }
+
+
+
 
 
 
