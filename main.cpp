@@ -37,7 +37,7 @@ int main() {
 	nskirstymas2("ketvirtas3.txt", "nblogi4l.txt");
 	nskirstymas2("penktas3.txt", "nblogi5l.txt");
 	cout << endl;
-	*/
+	
 	cout << "Naudojant vektoriu, 3 strategija " << endl;
 	nskirstymasv("pirmas3.txt", "nblogi1v.txt");
 	nskirstymasv("antras3.txt", "nblogi2v.txt");
@@ -45,7 +45,11 @@ int main() {
 	nskirstymasv("ketvirtas3.txt", "nblogi4v.txt");
 	nskirstymasv("penktas3.txt", "nblogi5v.txt");
 	cout << endl;
-
+	*/
 	cout << "Naudojant sarasa, 3 strategija " << endl;
-
+	nskirstymasl("pirmas.txt","geri1l.txt", "blogi1l.txt");
+	nskirstymasl("antras.txt", "geri2l.txt", "blogi2l.txt");
+	nskirstymasl("trecias.txt", "geri3l.txt", "blogi3l.txt");
+	nskirstymasl("ketvirtas.txt", "geri4l.txt", "blogi4l.txt");
+	nskirstymasl("penktas.txt", "geri5l.txt", "blogi5l.txt");
 }

@@ -151,6 +151,7 @@ void skirstymas2(string pavadinimas, string naujas1, string naujas2);
 void nskirstymas(string pavadinimas, string naujas1);
 void nskirstymas2(string pavadinimas, string naujas1);
 void nskirstymasv(string pavadinimas, string naujas1);
+void nskirstymasl(string pavadinimas, string naujas1, string naujas2);
 bool rezultatas3(const studentas3& a);
 bool pagalrez3(const studentas3& a, const studentas3& b);
 bool rezultatas4(const studentas4& a);
