@@ -63,7 +63,7 @@ using std::remove_copy_if;
 using std::transform;
 using std::partition;
 using std::stable_partition;
-
+using std::ostream_iterator;
 
 struct studentas {
 	string vard, pav;
@@ -91,7 +91,17 @@ struct studentas3 {
 	string vert;
 };
 
+struct studentas4 {
+	string vard, pav;
+	list <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
 std::ostream& operator<<(std::ostream& os, const studentas3& s);
+std::ostream& operator<<(std::ostream& os, const studentas4& s);
 
 template<typename T>
 double mediana2(T vekt)
@@ -143,3 +153,5 @@ void nskirstymas2(string pavadinimas, string naujas1);
 void nskirstymasv(string pavadinimas, string naujas1);
 bool rezultatas3(const studentas3& a);
 bool pagalrez3(const studentas3& a, const studentas3& b);
+bool rezultatas4(const studentas4& a);
+bool pagalrez4(const studentas4& a, const studentas4& b);

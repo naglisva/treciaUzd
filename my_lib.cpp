@@ -75,3 +75,9 @@ bool rezultatas(const studentas& a) {
 bool rezultatas3(const studentas3& a) {
 	return a.mgrez >= 5;
 }
+bool rezultatas4(const studentas4& a) {
+	return a.mgrez >= 5;
+}
+bool pagalrez4(const studentas4& a, const studentas4& b) {
+	return a.mgrez < b.mgrez;
+}
