@@ -65,15 +65,6 @@ using std::partition;
 using std::stable_partition;
 using std::ostream_iterator;
 
-struct studentas {
-	string vard, pav;
-	vector <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
 class Studentas {
     private:
     string vard_, pav_;
@@ -90,35 +81,6 @@ class Studentas {
     double galBalas(double (*) (vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
 };
-struct studentas2 {
-	string vard, pav;
-	list <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-struct studentas3 {
-	string vard, pav;
-	vector <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-struct studentas4 {
-	string vard, pav;
-	list <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-std::ostream& operator<<(std::ostream& os, const studentas3& s);
-std::ostream& operator<<(std::ostream& os, const studentas4& s);
 
 template<typename T>
 double mediana2(T vekt)
@@ -152,27 +114,4 @@ double mediana2(T vekt)
     }
 }
 
-
-
-int nuskaitymas();
-double mediana(vector<int> vekt);
-float vidurkis(vector<int> vekt);
-vector <int> random(int n);
-bool pagalvarda(const studentas& a, const studentas& b);
-bool pagalrez(const studentas& a, const studentas& b);
-
 bool PagalRez(const Studentas& a, const Studentas& b);
-
-bool pagalrez2(const studentas2& a, const studentas2& b);
-bool rezultatas(const studentas& a);
-void generatorius(int x, string pavadinimas);
-void vector1(string pavadinimas, string naujas1, string naujas2);
-void list1(string pavadinimas, string naujas1, string naujas2);
-void vector2(string pavadinimas, string naujas1);
-void list2(string pavadinimas, string naujas1);
-void vector3(string pavadinimas, string naujas1);
-void list3(string pavadinimas, string naujas1, string naujas2);
-bool rezultatas3(const studentas3& a);
-bool pagalrez3(const studentas3& a, const studentas3& b);
-bool rezultatas4(const studentas4& a);
-bool pagalrez4(const studentas4& a, const studentas4& b);

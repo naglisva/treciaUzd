@@ -1,36 +1,10 @@
 #include "my_lib.h"
 
-
-void generatorius(int x, string pavadinimas) {
-	srand(time(nullptr));
-	ofstream file(pavadinimas);
-
-	auto start = high_resolution_clock::now();
-
-    file << "Vardas  Pavarde  Pazymiai" <<endl;
-
-	for (int n = 1; n <= x; ++n) {
-		file << "vard(" << n << ") pav(" << n << ")";
-		for (int i = 0; i < 8; ++i) {
-			file << "  " << (rand() % 10 + 1);
-		}
-		file << "\n";
-	}
-
-	auto stop = high_resolution_clock::now();
-	auto duration = duration_cast<seconds>(stop - start);
-
-	cout << "Faila sukurt uztruko: "
-		<< duration.count() << " sek." << endl;
-
-	file.close();
-}
-
-void vector1(string pavadinimas, string naujas1, string naujas2) {
+void list1(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
     ofstream outputfile2(naujas2);
-    vector<studentas> mokiniai;
+    list<studentas2> mokiniai;
 
     outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
@@ -48,10 +22,10 @@ void vector1(string pavadinimas, string naujas1, string naujas2) {
     while (getline(inputfile, line)) {
     auto start_line_read = high_resolution_clock::now(); 
     istringstream iss(line);
-    studentas Laik;
+    studentas2 Laik;
     iss >> Laik.pav >> Laik.vard;
     int nd;
-    vector<int> temp;
+    list<int> temp;
     while (iss >> nd) {
         temp.push_back(nd);
     }
@@ -73,7 +47,7 @@ void vector1(string pavadinimas, string naujas1, string naujas2) {
 
 
     
-    sort(mokiniai.begin(), mokiniai.end(), pagalrez);
+    mokiniai.sort(pagalrez2);
 
     for (const auto& Laik : mokiniai) {
         auto start_write = high_resolution_clock::now(); 
@@ -107,10 +81,10 @@ void vector1(string pavadinimas, string naujas1, string naujas2) {
         << endl;
 }
 
-void vector2(string pavadinimas, string naujas1) {
+void list2(string pavadinimas, string naujas1) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
-    vector<studentas> mokiniai;
+    list<studentas2> mokiniai;
 
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
     
@@ -127,10 +101,10 @@ void vector2(string pavadinimas, string naujas1) {
     while (getline(inputfile, line)) {
         auto start_line_read = high_resolution_clock::now(); 
         istringstream iss(line);
-        studentas Laik;
+        studentas2 Laik;
         iss >> Laik.pav >> Laik.vard;
         int nd;
-        vector<int> temp;
+        list<int> temp;
         while (iss >> nd) {
             temp.push_back(nd);
         }
@@ -150,7 +124,7 @@ void vector2(string pavadinimas, string naujas1) {
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
-    sort(mokiniai.begin(), mokiniai.end(), pagalrez);
+    mokiniai.sort(pagalrez2);
 
     ofstream outputfile(pavadinimas); 
     outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
@@ -187,17 +161,18 @@ void vector2(string pavadinimas, string naujas1) {
          << endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const studentas3& s) {
+std::ostream& operator<<(std::ostream& os, const studentas4& s) {
     os << s.pav << " " << s.vard << "   " << s.mgrez;
     return os;
 }
 
-void vector3(string pavadinimas, string naujas1) {
+void list3(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
-    vector<studentas3> mokiniai;
+    ofstream outputfile2(naujas2);
+    list<studentas4> mokiniai;
 
-
+    outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
     
     string dummyLine;
@@ -213,10 +188,10 @@ void vector3(string pavadinimas, string naujas1) {
     while (getline(inputfile, line)) {
         auto start_line_read = high_resolution_clock::now(); 
         istringstream iss(line);
-        studentas3 Laik;
+        studentas4 Laik;
         iss >> Laik.pav >> Laik.vard;
         int nd;
-        vector<int> temp;
+        list<int> temp;
         while (iss >> nd) {
             temp.push_back(nd);
         }
@@ -236,38 +211,32 @@ void vector3(string pavadinimas, string naujas1) {
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
-    sort(mokiniai.begin(), mokiniai.end(),  pagalrez3);
+    mokiniai.sort(pagalrez4);
 
-    auto partition_point = stable_partition(mokiniai.begin(), mokiniai.end(), rezultatas3);
+    auto partition_point = stable_partition(mokiniai.begin(), mokiniai.end(),  rezultatas4);
 
-    ofstream outputfile(pavadinimas); 
-    outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
-
-    copy(mokiniai.begin(), partition_point, ostream_iterator<studentas3>(outputfile1, "\n"));
-
-    copy(partition_point, mokiniai.end(), ostream_iterator<studentas3>(outputfile, "\n"));
+    auto start_write = high_resolution_clock::now(); 
+    copy(mokiniai.begin(), partition_point, ostream_iterator<studentas4>(outputfile1, "\n"));
+    copy(partition_point, mokiniai.end(), ostream_iterator<studentas4>(outputfile2, "\n"));
+    auto end_write = high_resolution_clock::now(); 
+    write_duration += duration_cast<microseconds>(end_write - start_write);
 
     auto end_total = high_resolution_clock::now(); 
 
     cout << "Visas eilutes nuskaityt uztruko: "
-         << double(read_duration.count())/1000000
-         << " sek."
-         << endl;
+        << double(read_duration.count())/1000000
+        << " sek."
+        << endl;
     cout << "Visus rezultatus suskaiciuot uztruko: "
-         << double(calc_duration.count())/1000000
-         << " sek."
-         << endl;
+        << double(calc_duration.count())/1000000
+        << " sek."
+        << endl;
     cout << "Informacija i failus isskirstyt uztruko: "
-         << double(write_duration.count())/1000000
-         << " sek."
-         << endl;
+        << double(write_duration.count())/1000000
+        << " sek."
+        << endl;
     cout << "Visas procesas uztruko: "
-         << double(duration_cast<std::chrono::microseconds>(end_total - start_total).count())/1000000
-         << " sek."
-         << endl;
+        << double(duration_cast<std::chrono::microseconds>(end_total - start_total).count())/1000000
+        << " sek."
+        << endl;
 }
-
-
-
-
-

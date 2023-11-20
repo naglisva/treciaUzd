@@ -60,6 +60,21 @@ bool pagalrez(const studentas& a, const studentas& b) {
 	return a.mgrez < b.mgrez;
 }
 
+
+
+double Studentas::galBalas(double (*func)(vector<int>) = mediana2<vector<int>>) const {
+    vector<int> values = paz_;
+    double result = func(values)*0.4 + egz_ *0.6;
+    return result;
+}
+
+bool PagalRez(const Studentas& a, const Studentas& b) {
+	return a.galBalas() < b.galBalas();
+}
+
+
+
+
 bool pagalrez3(const studentas3& a, const studentas3& b) {
 	return a.mgrez < b.mgrez;
 }
