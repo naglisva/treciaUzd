@@ -1,4 +1,6 @@
 #include "my_lib.h"
+
+
 int main() {
 	//generatorius(1000,"pirmas.txt");
 	//generatorius(10000,"antras.txt");
@@ -6,6 +8,7 @@ int main() {
 	//generatorius(1000000,"ketvirtas.txt");
 	//generatorius(10000000,"penktas.txt");
 	
+	/*
 	cout << "Naudojant sarasa " << endl;
 	list1("pirmas.txt","geri1.txt", "blogi1.txt");
 	list1("antras.txt", "geri2.txt", "blogi2.txt");
@@ -13,15 +16,15 @@ int main() {
 	//list1("ketvirtas.txt", "geri4.txt", "blogi4.txt");
 	//list1("penktas.txt", "geri5.txt", "blogi5.txt");
 	cout << endl;
-
+*/
 	cout << "Naudojant vektoriu " << endl;
-	vector1("pirmas.txt","geri1v.txt", "blogi1v.txt");
-	vector1("antras.txt", "geri2v.txt", "blogi2v.txt");
-	vector1("trecias.txt", "geri3v.txt", "blogi3v.txt");
+	vector1c("pirmas.txt","geri1v.txt", "blogi1v.txt");
+	vector1c("antras.txt", "geri2v.txt", "blogi2v.txt");
+	vector1c("trecias.txt", "geri3v.txt", "blogi3v.txt");
 	//vector1("ketvirtas.txt", "geri4v.txt", "blogi4v.txt");
 	//vector1("penktas.txt", "geri5v.txt", "blogi5v.txt");
 	cout << endl;
-	
+/*	
 	cout << "Naudojant vektoriu, 2 strategija " << endl;
 	vector2("pirmas2.txt", "nblogi1v.txt");
 	vector2("antras2.txt", "nblogi2v.txt");
@@ -52,4 +55,6 @@ int main() {
 	list3("trecias.txt", "geri3l.txt", "blogi3l.txt");
 	//list3("ketvirtas.txt", "geri4l.txt", "blogi4l.txt");
 	//list3("penktas.txt", "geri5l.txt", "blogi5l.txt");
+
+	*/
 }

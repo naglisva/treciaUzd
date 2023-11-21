@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -73,7 +74,7 @@ struct studentas {
 	float mgrez;
 	string vert;
 };
-
+/*
 class Studentas {
     private:
     string vard_, pav_;
@@ -90,35 +91,7 @@ class Studentas {
     double galBalas(double (*) (vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
 };
-struct studentas2 {
-	string vard, pav;
-	list <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-struct studentas3 {
-	string vard, pav;
-	vector <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-struct studentas4 {
-	string vard, pav;
-	list <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
-
-std::ostream& operator<<(std::ostream& os, const studentas3& s);
-std::ostream& operator<<(std::ostream& os, const studentas4& s);
+*/
 
 template<typename T>
 double mediana2(T vekt)
@@ -151,6 +124,61 @@ double mediana2(T vekt)
         }
     }
 }
+class Studentas {
+    private:
+    string vard_, pav_;
+	vector <int> paz_;
+	int egz_;
+	float vgrez_;
+	float mgrez_;
+	string vert_;
+    public:
+    Studentas() : egz_(0) {}
+    Studentas(std::istream& is);
+    inline string vardas() const { return vard_; }
+    inline string pavarde() const { return pav_; } 
+    inline vector <int> pazymiai() const {return paz_;}
+    inline int egzaminas() const { return egz_;}
+    inline void setVardas(const string& vardas) { vard_ = vardas; }
+    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
+    inline void setPazymiai(const vector<int>& pazymiai) { paz_ = pazymiai; }
+    inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
+    double galBalas(double (*func)(std::vector<int>) = mediana2) const;
+    std::istream& readStudent(std::istream&);
+};
+
+
+struct studentas2 {
+	string vard, pav;
+	list <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
+struct studentas3 {
+	string vard, pav;
+	vector <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
+struct studentas4 {
+	string vard, pav;
+	list <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
+std::ostream& operator<<(std::ostream& os, const studentas3& s);
+std::ostream& operator<<(std::ostream& os, const studentas4& s);
+
+
 
 
 
@@ -176,3 +204,6 @@ bool rezultatas3(const studentas3& a);
 bool pagalrez3(const studentas3& a, const studentas3& b);
 bool rezultatas4(const studentas4& a);
 bool pagalrez4(const studentas4& a, const studentas4& b);
+
+bool PagalRez(const Studentas& a, const Studentas& b);
+void vector1c(string pavadinimas, string naujas1, string naujas2);
