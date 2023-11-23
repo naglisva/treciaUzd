@@ -21,18 +21,18 @@ int main() {
 	vector1c("pirmas.txt","geri1v.txt", "blogi1v.txt");
 	vector1c("antras.txt", "geri2v.txt", "blogi2v.txt");
 	vector1c("trecias.txt", "geri3v.txt", "blogi3v.txt");
-	//vector1("ketvirtas.txt", "geri4v.txt", "blogi4v.txt");
-	//vector1("penktas.txt", "geri5v.txt", "blogi5v.txt");
-	cout << endl;
-/*	
-	cout << "Naudojant vektoriu, 2 strategija " << endl;
-	vector2("pirmas2.txt", "nblogi1v.txt");
-	vector2("antras2.txt", "nblogi2v.txt");
-	vector2("trecias2.txt", "nblogi3v.txt");
-	//vector2("ketvirtas2.txt", "nblogi4v.txt");
-	//vector2("penktas2.txt", "nblogi5v.txt");
+	//vector1c("ketvirtas.txt", "geri4v.txt", "blogi4v.txt");
+	//vector1c("penktas.txt", "geri5v.txt", "blogi5v.txt");
 	cout << endl;
 
+	cout << "Naudojant vektoriu, 2 strategija " << endl;
+	vector2c("pirmas2.txt", "nblogi1v.txt");
+	vector2c("antras2.txt", "nblogi2v.txt");
+	vector2c("trecias2.txt", "nblogi3v.txt");
+	//vector2c("ketvirtas2.txt", "nblogi4v.txt");
+	//vector2c("penktas2.txt", "nblogi5v.txt");
+	cout << endl;
+/*
 	cout << "Naudojant sarasa, 2 strategija " << endl;
 	list2("pirmas3.txt", "nblogi1l.txt");
 	list2("antras3.txt", "nblogi2l.txt");

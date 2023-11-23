@@ -207,3 +207,4 @@ bool pagalrez4(const studentas4& a, const studentas4& b);
 
 bool PagalRez(const Studentas& a, const Studentas& b);
 void vector1c(string pavadinimas, string naujas1, string naujas2);
+void vector2c(string pavadinimas, string naujas1);
