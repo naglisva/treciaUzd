@@ -148,6 +148,31 @@ class Studentas {
 };
 
 
+class Studentas2 {
+    private:
+    string vard_, pav_;
+	vector <int> paz_;
+	int egz_;
+	float vgrez_;
+	float mgrez_;
+	string vert_;
+    public:
+    Studentas2() : egz_(0) {}
+    Studentas2(std::istream& is);
+    inline string vardas() const { return vard_; }
+    inline string pavarde() const { return pav_; } 
+    inline vector <int> pazymiai() const {return paz_;}
+    inline int egzaminas() const { return egz_;}
+    inline void setVardas(const string& vardas) { vard_ = vardas; }
+    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
+    inline void setPazymiai(const vector<int>& pazymiai) { paz_ = pazymiai; }
+    inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
+    double galBalas(double (*func)(std::vector<int>) = mediana2) const;
+    std::istream& readStudent(std::istream&);
+};
+
+std::ostream& operator<<(std::ostream& os, const Studentas2& s);
+
 struct studentas2 {
 	string vard, pav;
 	list <int> paz;
@@ -206,5 +231,8 @@ bool rezultatas4(const studentas4& a);
 bool pagalrez4(const studentas4& a, const studentas4& b);
 
 bool PagalRez(const Studentas& a, const Studentas& b);
+bool PagalRez2(const Studentas2& a, const Studentas2& b);
 void vector1c(string pavadinimas, string naujas1, string naujas2);
 void vector2c(string pavadinimas, string naujas1);
+void vector3c(string pavadinimas, string naujas1);
+bool Rezultatas(const Studentas2& a);
