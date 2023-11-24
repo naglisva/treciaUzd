@@ -74,24 +74,6 @@ struct studentas {
 	float mgrez;
 	string vert;
 };
-/*
-class Studentas {
-    private:
-    string vard_, pav_;
-	vector <int> paz_;
-	int egz_;
-	float vgrez_;
-	float mgrez_;
-	string vert_;
-    public:
-    Studentas() : egz_(0) {}
-    Studentas(std::istream& is);
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; } 
-    double galBalas(double (*) (vector<int>) = mediana2) const;
-    std::istream& readStudent(std::istream&);
-};
-*/
 
 template<typename T>
 double mediana2(T vekt)
@@ -196,6 +178,31 @@ class Studentas3 {
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
 };
+
+class Studentas4 {
+    private:
+    string vard_, pav_;
+	list <int> paz_;
+	int egz_;
+	float vgrez_;
+	float mgrez_;
+	string vert_;
+    public:
+    Studentas4() : egz_(0) {}
+    Studentas4(std::istream& is);
+    inline string vardas() const { return vard_; }
+    inline string pavarde() const { return pav_; } 
+    inline list<int> pazymiai() const {return paz_;}
+    inline int egzaminas() const { return egz_;}
+    inline void setVardas(const string& vardas) { vard_ = vardas; }
+    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
+    inline void setPazymiai(const list<int>& pazymiai) { paz_ = pazymiai; }
+    inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
+    double galBalas(double (*func)(std::list<int>) = mediana2) const;
+    std::istream& readStudent(std::istream&);
+};
+
+std::ostream& operator<<(std::ostream& os, const Studentas4& s);
 struct studentas2 {
 	string vard, pav;
 	list <int> paz;
@@ -261,5 +268,8 @@ void vector3c(string pavadinimas, string naujas1);
 bool Rezultatas(const Studentas2& a);
 
 bool PagalRez3(const Studentas3& a, const Studentas3& b);
+bool PagalRez4(const Studentas4& a, const Studentas4& b);
 void list1c(string pavadinimas, string naujas1, string naujas2);
 void list2c(string pavadinimas, string naujas1);
+void list3c(string pavadinimas, string naujas1, string naujas2);
+bool Rezultatas2(const Studentas4& a);

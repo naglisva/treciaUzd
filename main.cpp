@@ -25,6 +25,13 @@ int main() {
 	//list2c("penktas3.txt", "nblogi5l.txt");
 	cout << endl;
 
+	cout << "Naudojant sarasa, 3 strategija " << endl;
+	list3c("pirmas.txt","geri1l.txt", "blogi1l.txt");
+	list3c("antras.txt", "geri2l.txt", "blogi2l.txt");
+	list3c("trecias.txt", "geri3l.txt", "blogi3l.txt");
+	//list3c("ketvirtas.txt", "geri4l.txt", "blogi4l.txt");
+	//list3c("penktas.txt", "geri5l.txt", "blogi5l.txt");
+
 	cout << "Naudojant vektoriu " << endl;
 	vector1c("pirmas.txt","geri1v.txt", "blogi1v.txt");
 	vector1c("antras.txt", "geri2v.txt", "blogi2v.txt");
@@ -48,13 +55,4 @@ int main() {
 	//vector3c("ketvirtas4.txt", "nnblogi4v.txt");
 	//vector3c("penktas4.txt", "nnblogi5v.txt");
 	cout << endl;
-/*	
-	cout << "Naudojant sarasa, 3 strategija " << endl;
-	list3("pirmas.txt","geri1l.txt", "blogi1l.txt");
-	list3("antras.txt", "geri2l.txt", "blogi2l.txt");
-	list3("trecias.txt", "geri3l.txt", "blogi3l.txt");
-	//list3("ketvirtas.txt", "geri4l.txt", "blogi4l.txt");
-	//list3("penktas.txt", "geri5l.txt", "blogi5l.txt");
-
-	*/
 }
