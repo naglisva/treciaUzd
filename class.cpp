@@ -77,3 +77,38 @@ bool PagalRez2(const Studentas2& a, const Studentas2& b) {
 bool Rezultatas(const Studentas2& a) {
 	return a.galBalas() >= 5;
 }
+
+std::istream& Studentas3::readStudent(std::istream& is) {
+    std::string vardas;
+    is >> vardas;
+    setVardas(vardas);
+
+    std::string pavarde;
+    is >> pavarde;
+    setPavarde(pavarde);
+
+    std::list<int> pazymiai;
+    int pazymys;
+    while (is >> pazymys) {
+        pazymiai.push_back(pazymys);
+    }
+    setPazymiai(pazymiai);
+
+    int egzaminas = pazymiai.back(); 
+    pazymiai.pop_back(); 
+    setEgzaminas(egzaminas);
+
+    return is;
+}
+
+
+
+double Studentas3::galBalas(double (*func)(std::list<int>)) const {
+    std::list<int> values = paz_;
+    double result = func(values)*0.4 + egz_ *0.6;
+    return result;
+}
+
+bool PagalRez3(const Studentas3& a, const Studentas3& b) {
+	return a.galBalas() < b.galBalas();
+}

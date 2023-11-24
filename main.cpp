@@ -8,15 +8,15 @@ int main() {
 	//generatorius(1000000,"ketvirtas.txt");
 	//generatorius(10000000,"penktas.txt");
 	
-	/*
+	
 	cout << "Naudojant sarasa " << endl;
-	list1("pirmas.txt","geri1.txt", "blogi1.txt");
-	list1("antras.txt", "geri2.txt", "blogi2.txt");
-	list1("trecias.txt", "geri3.txt", "blogi3.txt");
-	//list1("ketvirtas.txt", "geri4.txt", "blogi4.txt");
-	//list1("penktas.txt", "geri5.txt", "blogi5.txt");
+	list1c("pirmas.txt","geri1.txt", "blogi1.txt");
+	list1c("antras.txt", "geri2.txt", "blogi2.txt");
+	list1c("trecias.txt", "geri3.txt", "blogi3.txt");
+	//list1c("ketvirtas.txt", "geri4.txt", "blogi4.txt");
+	//list1c("penktas.txt", "geri5.txt", "blogi5.txt");
 	cout << endl;
-*/
+
 	cout << "Naudojant vektoriu " << endl;
 	vector1c("pirmas.txt","geri1v.txt", "blogi1v.txt");
 	vector1c("antras.txt", "geri2v.txt", "blogi2v.txt");
