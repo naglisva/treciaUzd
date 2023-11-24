@@ -66,14 +66,6 @@ using std::partition;
 using std::stable_partition;
 using std::ostream_iterator;
 
-struct studentas {
-	string vard, pav;
-	vector <int> paz;
-	int egz;
-	float vgrez;
-	float mgrez;
-	string vert;
-};
 
 template<typename T>
 double mediana2(T vekt)
@@ -106,6 +98,7 @@ double mediana2(T vekt)
         }
     }
 }
+
 class Studentas {
     private:
     string vard_, pav_;
@@ -128,7 +121,6 @@ class Studentas {
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
 };
-
 
 class Studentas2 {
     private:
@@ -154,7 +146,6 @@ class Studentas2 {
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas2& s);
-
 
 class Studentas3 {
     private:
@@ -203,6 +194,17 @@ class Studentas4 {
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas4& s);
+
+
+struct studentas {
+	string vard, pav;
+	vector <int> paz;
+	int egz;
+	float vgrez;
+	float mgrez;
+	string vert;
+};
+
 struct studentas2 {
 	string vard, pav;
 	list <int> paz;
@@ -234,31 +236,26 @@ std::ostream& operator<<(std::ostream& os, const studentas3& s);
 std::ostream& operator<<(std::ostream& os, const studentas4& s);
 
 
-
-
-
 int nuskaitymas();
-double mediana(vector<int> vekt);
 float vidurkis(vector<int> vekt);
 vector <int> random(int n);
+void generatorius(int x, string pavadinimas);
+
 bool pagalvarda(const studentas& a, const studentas& b);
 bool pagalrez(const studentas& a, const studentas& b);
-
-bool PagalRez(const Studentas& a, const Studentas& b);
+bool pagalrez3(const studentas3& a, const studentas3& b);
+void vector1(string pavadinimas, string naujas1, string naujas2);
+void vector2(string pavadinimas, string naujas1);
+void vector3(string pavadinimas, string naujas1);
+bool rezultatas(const studentas& a);
+bool rezultatas3(const studentas3& a);
 
 bool pagalrez2(const studentas2& a, const studentas2& b);
-bool rezultatas(const studentas& a);
-void generatorius(int x, string pavadinimas);
-void vector1(string pavadinimas, string naujas1, string naujas2);
-void list1(string pavadinimas, string naujas1, string naujas2);
-void vector2(string pavadinimas, string naujas1);
-void list2(string pavadinimas, string naujas1);
-void vector3(string pavadinimas, string naujas1);
-void list3(string pavadinimas, string naujas1, string naujas2);
-bool rezultatas3(const studentas3& a);
-bool pagalrez3(const studentas3& a, const studentas3& b);
-bool rezultatas4(const studentas4& a);
 bool pagalrez4(const studentas4& a, const studentas4& b);
+void list1(string pavadinimas, string naujas1, string naujas2);
+void list2(string pavadinimas, string naujas1);
+void list3(string pavadinimas, string naujas1, string naujas2);
+bool rezultatas4(const studentas4& a);
 
 bool PagalRez(const Studentas& a, const Studentas& b);
 bool PagalRez2(const Studentas2& a, const Studentas2& b);

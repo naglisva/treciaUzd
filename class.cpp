@@ -27,8 +27,6 @@ std::istream& Studentas::readStudent(std::istream& is) {
     return is;
 }
 
-
-
 double Studentas::galBalas(double (*func)(std::vector<int>)) const {
     std::vector<int> values = paz_;
     double result = func(values)*0.4 + egz_ *0.6;
@@ -38,6 +36,7 @@ double Studentas::galBalas(double (*func)(std::vector<int>)) const {
 bool PagalRez(const Studentas& a, const Studentas& b) {
 	return a.galBalas() < b.galBalas();
 }
+
 
 std::istream& Studentas2::readStudent(std::istream& is) {
     std::string vardas;
@@ -62,8 +61,6 @@ std::istream& Studentas2::readStudent(std::istream& is) {
     return is;
 }
 
-
-
 double Studentas2::galBalas(double (*func)(std::vector<int>)) const {
     std::vector<int> values = paz_;
     double result = func(values)*0.4 + egz_ *0.6;
@@ -77,6 +74,7 @@ bool PagalRez2(const Studentas2& a, const Studentas2& b) {
 bool Rezultatas(const Studentas2& a) {
 	return a.galBalas() >= 5;
 }
+
 
 std::istream& Studentas3::readStudent(std::istream& is) {
     std::string vardas;
@@ -101,8 +99,6 @@ std::istream& Studentas3::readStudent(std::istream& is) {
     return is;
 }
 
-
-
 double Studentas3::galBalas(double (*func)(std::list<int>)) const {
     std::list<int> values = paz_;
     double result = func(values)*0.4 + egz_ *0.6;
@@ -112,6 +108,7 @@ double Studentas3::galBalas(double (*func)(std::list<int>)) const {
 bool PagalRez3(const Studentas3& a, const Studentas3& b) {
 	return a.galBalas() < b.galBalas();
 }
+
 
 std::istream& Studentas4::readStudent(std::istream& is) {
     std::string vardas;
@@ -135,8 +132,6 @@ std::istream& Studentas4::readStudent(std::istream& is) {
 
     return is;
 }
-
-
 
 double Studentas4::galBalas(double (*func)(std::list<int>)) const {
     std::list<int> values = paz_;
