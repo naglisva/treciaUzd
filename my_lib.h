@@ -262,3 +262,4 @@ bool Rezultatas(const Studentas2& a);
 
 bool PagalRez3(const Studentas3& a, const Studentas3& b);
 void list1c(string pavadinimas, string naujas1, string naujas2);
+void list2c(string pavadinimas, string naujas1);
