@@ -104,12 +104,21 @@ class Studentas {
     string vard_, pav_;
 	vector <int> paz_;
 	int egz_;
-	float vgrez_;
-	float mgrez_;
 	string vert_;
     public:
     Studentas() : egz_(0) {}
     Studentas(std::istream& is);
+    Studentas(const Studentas& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas& operator=(const Studentas& that){
+        vard_ = that.vard_;
+        pav_ = that.pav_;
+        paz_ = that.paz_;
+        egz_ = that.egz_;
+        vert_ = that.vert_;
+        return *this;
+    }
+    ~Studentas(){}
+
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
     inline vector <int> pazymiai() const {return paz_;}
