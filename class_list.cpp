@@ -121,7 +121,9 @@ void list2c(string pavadinimas, string naujas1) {
         Laik.galBalas(mediana2);
         auto end_calc = high_resolution_clock::now(); 
 
-        mokiniai.push_back(move(Laik));
+        Studentas3 newStudent;
+        newStudent = Laik;
+        mokiniai.push_back(newStudent);
 
         read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);

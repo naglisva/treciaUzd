@@ -120,7 +120,6 @@ void vector2c(string pavadinimas, string naujas1) {
         Laik.galBalas(mediana2);
         auto end_calc = high_resolution_clock::now(); 
 
-        //mokiniai.push_back(move(Laik));
         Studentas newStudent;
         newStudent = Laik;
         mokiniai.push_back(newStudent);
