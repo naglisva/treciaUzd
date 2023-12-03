@@ -136,12 +136,21 @@ class Studentas2 {
     string vard_, pav_;
 	vector <int> paz_;
 	int egz_;
-	float vgrez_;
-	float mgrez_;
 	string vert_;
     public:
     Studentas2() : egz_(0) {}
     Studentas2(std::istream& is);
+    Studentas2(const Studentas2& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas2& operator=(const Studentas2& that){
+        vard_ = that.vard_;
+        pav_ = that.pav_;
+        paz_ = that.paz_;
+        egz_ = that.egz_;
+        vert_ = that.vert_;
+        return *this;
+    }
+    ~Studentas2(){}
+
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
     inline vector <int> pazymiai() const {return paz_;}
@@ -161,12 +170,21 @@ class Studentas3 {
     string vard_, pav_;
 	list <int> paz_;
 	int egz_;
-	float vgrez_;
-	float mgrez_;
 	string vert_;
     public:
     Studentas3() : egz_(0) {}
     Studentas3(std::istream& is);
+    Studentas3(const Studentas3& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas3& operator=(const Studentas3& that){
+        vard_ = that.vard_;
+        pav_ = that.pav_;
+        paz_ = that.paz_;
+        egz_ = that.egz_;
+        vert_ = that.vert_;
+        return *this;
+    }
+    ~Studentas3(){}
+
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
     inline list<int> pazymiai() const {return paz_;}
@@ -184,12 +202,21 @@ class Studentas4 {
     string vard_, pav_;
 	list <int> paz_;
 	int egz_;
-	float vgrez_;
-	float mgrez_;
 	string vert_;
     public:
     Studentas4() : egz_(0) {}
     Studentas4(std::istream& is);
+    Studentas4(const Studentas4& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas4& operator=(const Studentas4& that){
+        vard_ = that.vard_;
+        pav_ = that.pav_;
+        paz_ = that.paz_;
+        egz_ = that.egz_;
+        vert_ = that.vert_;
+        return *this;
+    }
+    ~Studentas4(){}
+
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
     inline list<int> pazymiai() const {return paz_;}
