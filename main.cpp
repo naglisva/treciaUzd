@@ -1,6 +1,6 @@
 #include "my_lib.h"
 
-
+//test
 int main() {
 	//generatorius(1000,"pirmas.txt");
 	//generatorius(10000,"antras.txt");
