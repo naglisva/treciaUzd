@@ -65,6 +65,8 @@ using std::transform;
 using std::partition;
 using std::stable_partition;
 using std::ostream_iterator;
+using std::find_if;
+using std::move;
 
 
 template<typename T>
@@ -296,13 +298,15 @@ bool rezultatas4(const studentas4& a);
 bool PagalRez(const Studentas& a, const Studentas& b);
 bool PagalRez2(const Studentas2& a, const Studentas2& b);
 void vector1c(string pavadinimas, string naujas1, string naujas2);
-void vector2c(string pavadinimas, string naujas1);
-void vector3c(string pavadinimas, string naujas1);
+void vector2c(string pavadinimas, string naujas1, string naujas2);
+void vector3c(string pavadinimas, string naujas1, string naujas2);
+bool Rezultatas1(const Studentas& a);
 bool Rezultatas(const Studentas2& a);
 
 bool PagalRez3(const Studentas3& a, const Studentas3& b);
 bool PagalRez4(const Studentas4& a, const Studentas4& b);
 void list1c(string pavadinimas, string naujas1, string naujas2);
-void list2c(string pavadinimas, string naujas1);
+void list2c(string pavadinimas, string naujas1, string naujas2);
 void list3c(string pavadinimas, string naujas1, string naujas2);
 bool Rezultatas2(const Studentas4& a);
+bool Rezultatas3(const Studentas3& a);

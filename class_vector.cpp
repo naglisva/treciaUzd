@@ -5,6 +5,8 @@ void vector1c(string pavadinimas, string naujas1, string naujas2) {
     ofstream outputfile1(naujas1);
     ofstream outputfile2(naujas2);
     vector<Studentas> mokiniai;
+    vector<Studentas> mokiniai_g;
+    vector<Studentas> mokiniai_b;
 
     outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
@@ -43,23 +45,30 @@ void vector1c(string pavadinimas, string naujas1, string naujas2) {
 
         mokiniai.push_back(move(Laik));
 
+        if (Laik.galBalas(mediana2) < 5){
+            mokiniai_b.push_back(move(Laik));
+        }
+        else {
+            mokiniai_g.push_back(move(Laik));
+        }
+
         read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
-    sort(mokiniai.begin(), mokiniai.end(), PagalRez);
+    sort(mokiniai_b.begin(), mokiniai_b.end(), PagalRez);
+    sort(mokiniai_g.begin(), mokiniai_g.end(), PagalRez);
 
-    for (const auto& Laik : mokiniai) {
-        auto start_write = high_resolution_clock::now(); 
-        if (Laik.galBalas(mediana2) < 5) {
-            outputfile2 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
-        }
-        else {
-            outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
-        }
-        auto end_write = high_resolution_clock::now(); 
-        write_duration += duration_cast<microseconds>(end_write - start_write);
+    auto start_write = high_resolution_clock::now();
+    for (const auto& Laik : mokiniai_b) {
+        outputfile2 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
     }
+    for (const auto& Laik : mokiniai_g) {
+        outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
+    }
+    auto end_write = high_resolution_clock::now(); 
+    write_duration += duration_cast<microseconds>(end_write - start_write);
+
 
     auto end_total = high_resolution_clock::now(); 
 
@@ -81,12 +90,15 @@ void vector1c(string pavadinimas, string naujas1, string naujas2) {
         << endl;
 }
 
-void vector2c(string pavadinimas, string naujas1) {
+void vector2c(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
+    ofstream outputfile2(naujas2);
     vector<Studentas> mokiniai;
+    vector<Studentas> mokiniai_b;
 
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
+    outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     
     string dummyLine;
 	getline(inputfile, dummyLine);
@@ -120,30 +132,29 @@ void vector2c(string pavadinimas, string naujas1) {
         Laik.galBalas(mediana2);
         auto end_calc = high_resolution_clock::now(); 
 
-        Studentas newStudent;
-        newStudent = Laik;
-        mokiniai.push_back(newStudent);
+        mokiniai.push_back(Laik); 
 
         read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
     sort(mokiniai.begin(), mokiniai.end(), PagalRez);
+    auto it = find_if(mokiniai.begin(), mokiniai.end(), Rezultatas1);
+    move(it, mokiniai.end(), std::back_inserter(mokiniai_b));
+    mokiniai.erase(it, mokiniai.end());
 
-    ofstream outputfile(pavadinimas); 
-    outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
+    //sort(mokiniai.begin(), mokiniai.end(), PagalRez);
+    //sort(mokiniai_b.begin(), mokiniai_b.end(), PagalRez);
 
-    for (const auto& Laik : mokiniai) {
-        auto start_write = high_resolution_clock::now(); 
-        if (Laik.galBalas() < 5) {
-            outputfile1 << Laik.pavarde() << " " << Laik.vardas() << "   " << Laik.galBalas() << endl;
-        }
-        else {
-            outputfile << Laik.pavarde() << " " << Laik.vardas() << "   " << Laik.galBalas() << endl;
-        }
-        auto end_write = high_resolution_clock::now(); 
-        write_duration += duration_cast<microseconds>(end_write - start_write);
+    auto start_write = high_resolution_clock::now();
+    for (const auto& Laik : mokiniai_b) {
+        outputfile2 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
     }
+    for (const auto& Laik : mokiniai) {
+        outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
+    }
+    auto end_write = high_resolution_clock::now(); 
+    write_duration += duration_cast<microseconds>(end_write - start_write);
 
     auto end_total = high_resolution_clock::now(); 
 
@@ -170,12 +181,15 @@ std::ostream& operator<<(std::ostream& os, const Studentas2& s) {
     return os;
 }
 
-void vector3c(string pavadinimas, string naujas1) {
+void vector3c(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
+    ofstream outputfile2(naujas2);
     vector<Studentas2> mokiniai;
+    vector<Studentas2> mokiniai_b;
 
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
+    outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     
     string dummyLine;
 	getline(inputfile, dummyLine);
@@ -219,12 +233,9 @@ void vector3c(string pavadinimas, string naujas1) {
 
     auto partition_point = stable_partition(mokiniai.begin(), mokiniai.end(), Rezultatas);
 
-    ofstream outputfile(pavadinimas); 
-    outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
-
     copy(mokiniai.begin(), partition_point, ostream_iterator<Studentas2>(outputfile1, "\n"));
 
-    copy(partition_point, mokiniai.end(), ostream_iterator<Studentas2>(outputfile, "\n"));
+    copy(partition_point, mokiniai.end(), ostream_iterator<Studentas2>(outputfile2, "\n"));
 
     auto end_total = high_resolution_clock::now(); 
 

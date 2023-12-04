@@ -5,6 +5,8 @@ void list1c(string pavadinimas, string naujas1, string naujas2) {
     ofstream outputfile1(naujas1);
     ofstream outputfile2(naujas2);
     list<Studentas3> mokiniai;
+    list<Studentas3> mokiniai_g;
+    list<Studentas3> mokiniai_b;
 
     outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
@@ -44,24 +46,30 @@ void list1c(string pavadinimas, string naujas1, string naujas2) {
 
         mokiniai.push_back(move(Laik));
 
+        if (Laik.galBalas(mediana2) < 5){
+            mokiniai_b.push_back(move(Laik));
+        }
+        else {
+            mokiniai_g.push_back(move(Laik));
+        }
+
         read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
 
 
-    mokiniai.sort(PagalRez3);
+    mokiniai_b.sort(PagalRez3);
+    mokiniai_g.sort(PagalRez3);
 
-    for (const auto& Laik : mokiniai) {
-        auto start_write = high_resolution_clock::now(); 
-        if (Laik.galBalas() < 5) {
-            outputfile2 << Laik.pavarde() << " " << Laik.vardas() << "   " << Laik.galBalas() << endl;
-        }
-        else {
-            outputfile1 << Laik.pavarde() << " " << Laik.vardas() << "   " << Laik.galBalas() << endl;
-        }
-        auto end_write = high_resolution_clock::now(); 
-        write_duration += duration_cast<microseconds>(end_write - start_write);
+    auto start_write = high_resolution_clock::now();
+    for (const auto& Laik : mokiniai_b) {
+        outputfile2 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
     }
+    for (const auto& Laik : mokiniai_g) {
+        outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
+    }
+    auto end_write = high_resolution_clock::now(); 
+    write_duration += duration_cast<microseconds>(end_write - start_write);
 
     auto end_total = high_resolution_clock::now(); 
 
@@ -83,13 +91,16 @@ void list1c(string pavadinimas, string naujas1, string naujas2) {
         << endl;
 }
 
-void list2c(string pavadinimas, string naujas1) {
+void list2c(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
+    ofstream outputfile2(naujas2);
     list<Studentas3> mokiniai;
+    list<Studentas3> mokiniai_b;
 
     outputfile1 << "Vardas  Pavarde  Rezultatas" <<endl;
-    
+    outputfile2 << "Vardas  Pavarde  Rezultatas" <<endl;
+
     string dummyLine;
 	getline(inputfile, dummyLine);
     string line;
@@ -130,21 +141,20 @@ void list2c(string pavadinimas, string naujas1) {
     }
 
     mokiniai.sort(PagalRez3);
+    auto it = find_if(mokiniai.begin(), mokiniai.end(), Rezultatas3);
+    move(it, mokiniai.end(), std::back_inserter(mokiniai_b));
+    mokiniai.erase(it, mokiniai.end());
 
-    ofstream outputfile(pavadinimas); 
-    outputfile << "Vardas  Pavarde  Rezultatas" <<endl;
 
-    for (const auto& Laik : mokiniai) {
-        auto start_write = high_resolution_clock::now(); 
-        if (Laik.galBalas() < 5) {
-            outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas() << endl;
-        }
-        else {
-            outputfile << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas() << endl;
-        }
-        auto end_write = high_resolution_clock::now(); 
-        write_duration += duration_cast<microseconds>(end_write - start_write);
+    auto start_write = high_resolution_clock::now();
+    for (const auto& Laik : mokiniai_b) {
+        outputfile2 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
     }
+    for (const auto& Laik : mokiniai) {
+        outputfile1 << Laik.vardas() << " " << Laik.pavarde() << "   " << Laik.galBalas(mediana2) << endl;
+    }
+    auto end_write = high_resolution_clock::now(); 
+    write_duration += duration_cast<microseconds>(end_write - start_write);
 
     auto end_total = high_resolution_clock::now(); 
 
