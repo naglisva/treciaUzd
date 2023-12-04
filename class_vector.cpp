@@ -181,6 +181,30 @@ std::ostream& operator<<(std::ostream& os, const Studentas2& s) {
     return os;
 }
 
+std::istream& operator>>(std::istream& is, Studentas2& s) {
+    std::string line;
+    if (std::getline(is, line)) {
+        std::istringstream iss(line);
+        std::string vardas, pavarde;
+        std::vector<int> pazymiai;
+        int pazymys;
+
+        iss >> vardas >> pavarde;
+        s.setVardas(vardas);
+        s.setPavarde(pavarde);
+
+        while (iss >> pazymys) {
+            pazymiai.push_back(pazymys);
+        }
+
+        int egzaminas = pazymiai.back();
+        pazymiai.pop_back();
+        s.setPazymiai(pazymiai);
+        s.setEgzaminas(egzaminas);
+    }
+    return is;
+}
+
 void vector3c(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
@@ -194,40 +218,24 @@ void vector3c(string pavadinimas, string naujas1, string naujas2) {
     string dummyLine;
 	getline(inputfile, dummyLine);
 
-    string line;
-
     auto start_total = high_resolution_clock::now(); 
     microseconds read_duration(0);
     microseconds calc_duration(0);
     microseconds write_duration(0);
 
-    while (getline(inputfile, line)) {
-        auto start_line_read = high_resolution_clock::now(); 
-        istringstream iss(line);
-        Studentas2 Laik;
-        string vardas, pavarde;
-        iss >> vardas >> pavarde;
-        Laik.setVardas(vardas);
-        Laik.setPavarde(pavarde);
-        int nd;
-        vector<int> temp;
-        while (iss >> nd) {
-            temp.push_back(nd);
-        }
-        vector<int> pazymiai(temp.begin(), prev(temp.end()));
-        Laik.setPazymiai(pazymiai);
-        Laik.setEgzaminas(temp.back());
-        auto end_line_read = high_resolution_clock::now(); 
-
+    Studentas2 Laik;
+    auto start_line_read = high_resolution_clock::now(); 
+    while (inputfile >> Laik) {
         auto start_calc = high_resolution_clock::now(); 
         Laik.galBalas(mediana2);
         auto end_calc = high_resolution_clock::now(); 
 
         mokiniai.push_back(move(Laik));
 
-        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
+    auto end_line_read = high_resolution_clock::now(); 
+    read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
 
     sort(mokiniai.begin(), mokiniai.end(), PagalRez2);
 

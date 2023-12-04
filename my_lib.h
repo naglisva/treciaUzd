@@ -167,9 +167,11 @@ class Studentas2 {
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
+    friend std::istream& operator>>(std::istream&, Studentas2&);
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas2& s);
+std::istream& operator>>(std::istream&, Studentas2&);
 
 class Studentas3 {
     private:
@@ -237,10 +239,11 @@ class Studentas4 {
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
+    friend std::istream& operator>>(std::istream&, Studentas4&);
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas4& s);
-
+std::istream& operator>>(std::istream&, Studentas4&);
 
 struct studentas {
 	string vard, pav;

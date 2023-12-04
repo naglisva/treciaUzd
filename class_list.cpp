@@ -181,6 +181,30 @@ std::ostream& operator<<(std::ostream& os, const Studentas4& s) {
     return os;
 }
 
+std::istream& operator>>(std::istream& is, Studentas4& s) {
+    std::string line;
+    if (std::getline(is, line)) {
+        std::istringstream iss(line);
+        std::string vardas, pavarde;
+        std::list<int> pazymiai;
+        int pazymys;
+
+        iss >> vardas >> pavarde;
+        s.setVardas(vardas);
+        s.setPavarde(pavarde);
+
+        while (iss >> pazymys) {
+            pazymiai.push_back(pazymys);
+        }
+
+        int egzaminas = pazymiai.back();
+        pazymiai.pop_back();
+        s.setPazymiai(pazymiai);
+        s.setEgzaminas(egzaminas);
+    }
+    return is;
+}
+
 void list3c(string pavadinimas, string naujas1, string naujas2) {
     ifstream inputfile(pavadinimas);
     ofstream outputfile1(naujas1);
@@ -199,34 +223,19 @@ void list3c(string pavadinimas, string naujas1, string naujas2) {
     microseconds calc_duration(0);
     microseconds write_duration(0);
 
-    while (getline(inputfile, line)) {
-        auto start_line_read = high_resolution_clock::now(); 
-        istringstream iss(line);
-        Studentas4 Laik;
-        string vardas, pavarde;
-        iss >> vardas >> pavarde;
-        Laik.setVardas(vardas);
-        Laik.setPavarde(pavarde);
-        int nd;
-        list<int> temp;
-        while (iss >> nd) {
-            temp.push_back(nd);
-        }
-        list<int> pazymiai(temp.begin(), prev(temp.end()));
-        Laik.setPazymiai(pazymiai);
-        Laik.setEgzaminas(temp.back());
-        auto end_line_read = high_resolution_clock::now(); 
-
+    Studentas4 Laik;
+    auto start_line_read = high_resolution_clock::now(); 
+    while (inputfile >> Laik) {
         auto start_calc = high_resolution_clock::now(); 
         Laik.galBalas(mediana2);
         auto end_calc = high_resolution_clock::now(); 
 
         mokiniai.push_back(move(Laik));
 
-        read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
         calc_duration += duration_cast<microseconds>(end_calc - start_calc);
     }
-
+    auto end_line_read = high_resolution_clock::now(); 
+    read_duration += duration_cast<microseconds>(end_line_read - start_line_read);
     mokiniai.sort(PagalRez4);
 
     auto partition_point = stable_partition(mokiniai.begin(), mokiniai.end(),  Rezultatas2);

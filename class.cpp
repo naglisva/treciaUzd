@@ -41,6 +41,7 @@ bool Rezultatas1(const Studentas& a) {
 	return a.galBalas() >= 5;
 }
 
+
 std::istream& Studentas2::readStudent(std::istream& is) {
     std::string vardas;
     is >> vardas;
@@ -115,6 +116,7 @@ bool PagalRez3(const Studentas3& a, const Studentas3& b) {
 bool Rezultatas3(const Studentas3& a) {
 	return a.galBalas() >= 5;
 }
+
 
 std::istream& Studentas4::readStudent(std::istream& is) {
     std::string vardas;
