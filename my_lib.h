@@ -119,7 +119,9 @@ class Studentas {
         vert_ = that.vert_;
         return *this;
     }
-    ~Studentas(){}
+    ~Studentas(){
+        paz_.clear();
+    }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
@@ -151,7 +153,9 @@ class Studentas2 {
         vert_ = that.vert_;
         return *this;
     }
-    ~Studentas2(){}
+    ~Studentas2(){
+        paz_.clear();
+    }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
@@ -185,7 +189,9 @@ class Studentas3 {
         vert_ = that.vert_;
         return *this;
     }
-    ~Studentas3(){}
+    ~Studentas3(){
+        paz_.clear();
+    }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
@@ -217,7 +223,9 @@ class Studentas4 {
         vert_ = that.vert_;
         return *this;
     }
-    ~Studentas4(){}
+    ~Studentas4(){
+        paz_.clear();
+    }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; } 
