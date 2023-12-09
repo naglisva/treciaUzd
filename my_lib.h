@@ -210,16 +210,15 @@ class Studentas2 : public Zmogus{
 std::ostream& operator<<(std::ostream& os, const Studentas2& s);
 std::istream& operator>>(std::istream&, Studentas2&);
 
-class Studentas3 {
+class Studentas3 : public Zmogus{
     private:
-    string vard_, pav_;
 	list <int> paz_;
 	int egz_;
 	string vert_;
     public:
     Studentas3() : egz_(0) {}
-    Studentas3(std::istream& is);
-    Studentas3(const Studentas3& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas3(const string& vardas, const string& pavarde) : Zmogus(vardas, pavarde), egz_(0) {}
+    Studentas3(const Studentas3& that) : Zmogus(that.vardas(), that.pavarde()), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
     Studentas3& operator=(const Studentas3& that){
         vard_ = that.vard_;
         pav_ = that.pav_;
@@ -232,12 +231,8 @@ class Studentas3 {
         paz_.clear();
     }
 
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; } 
     inline list<int> pazymiai() const {return paz_;}
     inline int egzaminas() const { return egz_;}
-    inline void setVardas(const string& vardas) { vard_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
     inline void setPazymiai(const list<int>& pazymiai) { paz_ = pazymiai; }
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
