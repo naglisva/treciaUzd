@@ -56,4 +56,6 @@ int main() {
 	//vector3c("ketvirtas.txt", "geri4_v3.txt", "blogi4_v3.txt");
 	//vector3c("penktas.txt", "geri5_v3.txt", "blogi5_v3.txt");
 	cout << endl;
+
+	//Zmogus naglis;
 }

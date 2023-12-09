@@ -110,6 +110,7 @@ class Zmogus {
     inline string pavarde() const { return pav_; } 
     inline void setVardas(const string& vardas) { vard_ = vardas; }
     inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
+    virtual void printInfo() const = 0;
 };
 
 class Studentas : public Zmogus {
@@ -139,6 +140,10 @@ class Studentas : public Zmogus {
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
+
+    void printInfo() const override {
+        std::cout << "Vardas: " << vardas() << ", Pavarde: " << pavarde() << ", Egzaminas: " << egzaminas() << std::endl;
+    }
 };
 
 
@@ -152,8 +157,8 @@ class Studentas2 : public Zmogus{
     Studentas2(const string& vardas, const string& pavarde) : Zmogus(vardas, pavarde), egz_(0) {}
     Studentas2(const Studentas2& that) : Zmogus(that.vardas(), that.pavarde()), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
     Studentas2& operator=(const Studentas2& that){
-        vard_ = that.vard_;
-        pav_ = that.pav_;
+        vard_ = that.vardas();
+        pav_ = that.pavarde();
         paz_ = that.paz_;
         egz_ = that.egz_;
         vert_ = that.vert_;
@@ -170,10 +175,15 @@ class Studentas2 : public Zmogus{
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
     friend std::istream& operator>>(std::istream&, Studentas2&);
+
+    void printInfo() const override {
+        std::cout << "Vardas: " << vardas() << ", Pavarde: " << pavarde() << ", Egzaminas: " << egzaminas() << std::endl;
+    }
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas2& s);
 std::istream& operator>>(std::istream&, Studentas2&);
+
 
 class Studentas3 : public Zmogus{
     private:
@@ -202,6 +212,9 @@ class Studentas3 : public Zmogus{
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
+    void printInfo() const override {
+        std::cout << "Vardas: " << vardas() << ", Pavarde: " << pavarde() << ", Egzaminas: " << egzaminas() << std::endl;
+    }
 };
 
 class Studentas4 : public Zmogus{
@@ -232,6 +245,9 @@ class Studentas4 : public Zmogus{
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
     friend std::istream& operator>>(std::istream&, Studentas4&);
+    void printInfo() const override {
+        std::cout << "Vardas: " << vardas() << ", Pavarde: " << pavarde() << ", Egzaminas: " << egzaminas() << std::endl;
+    }
 };
 
 std::ostream& operator<<(std::ostream& os, const Studentas4& s);
