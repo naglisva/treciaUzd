@@ -100,7 +100,7 @@ double mediana2(T vekt)
         }
     }
 }
-
+/*
 class Studentas {
     private:
     string vard_, pav_;
@@ -134,6 +134,48 @@ class Studentas {
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
     std::istream& readStudent(std::istream&);
 };
+*/
+class Zmogus {
+    protected:
+    string vard_, pav_;
+    public:
+    Zmogus() {}
+    Zmogus(const string& vardas, const string& pavarde) : vard_(vardas), pav_(pavarde) {}
+    inline string vardas() const { return vard_; }
+    inline string pavarde() const { return pav_; } 
+    inline void setVardas(const string& vardas) { vard_ = vardas; }
+    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
+};
+
+class Studentas : public Zmogus {
+    private:
+    vector <int> paz_;
+    int egz_;
+    string vert_;
+    public:
+    Studentas() : egz_(0) {}
+    Studentas(const string& vardas, const string& pavarde) : Zmogus(vardas, pavarde), egz_(0) {}
+    Studentas(const Studentas& that) : Zmogus(that.vardas(), that.pavarde()), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas& operator=(const Studentas& that){
+        vard_ = that.vardas();
+        pav_ = that.pavarde();
+        paz_ = that.paz_;
+        egz_ = that.egz_;
+        vert_ = that.vert_;
+        return *this;
+    }
+    ~Studentas(){
+        paz_.clear();
+    }
+
+    inline vector <int> pazymiai() const {return paz_;}
+    inline int egzaminas() const { return egz_;}
+    inline void setPazymiai(const vector<int>& pazymiai) { paz_ = pazymiai; }
+    inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
+    double galBalas(double (*func)(std::vector<int>) = mediana2) const;
+    std::istream& readStudent(std::istream&);
+};
+
 
 class Studentas2 {
     private:
