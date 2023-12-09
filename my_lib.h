@@ -100,41 +100,6 @@ double mediana2(T vekt)
         }
     }
 }
-/*
-class Studentas {
-    private:
-    string vard_, pav_;
-	vector <int> paz_;
-	int egz_;
-	string vert_;
-    public:
-    Studentas() : egz_(0) {}
-    Studentas(std::istream& is);
-    Studentas(const Studentas& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
-    Studentas& operator=(const Studentas& that){
-        vard_ = that.vard_;
-        pav_ = that.pav_;
-        paz_ = that.paz_;
-        egz_ = that.egz_;
-        vert_ = that.vert_;
-        return *this;
-    }
-    ~Studentas(){
-        paz_.clear();
-    }
-
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; } 
-    inline vector <int> pazymiai() const {return paz_;}
-    inline int egzaminas() const { return egz_;}
-    inline void setVardas(const string& vardas) { vard_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
-    inline void setPazymiai(const vector<int>& pazymiai) { paz_ = pazymiai; }
-    inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
-    double galBalas(double (*func)(std::vector<int>) = mediana2) const;
-    std::istream& readStudent(std::istream&);
-};
-*/
 class Zmogus {
     protected:
     string vard_, pav_;
@@ -239,16 +204,15 @@ class Studentas3 : public Zmogus{
     std::istream& readStudent(std::istream&);
 };
 
-class Studentas4 {
+class Studentas4 : public Zmogus{
     private:
-    string vard_, pav_;
 	list <int> paz_;
 	int egz_;
 	string vert_;
     public:
     Studentas4() : egz_(0) {}
-    Studentas4(std::istream& is);
-    Studentas4(const Studentas4& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas4(const string& vardas, const string& pavarde) : Zmogus(vardas, pavarde), egz_(0) {}
+    Studentas4(const Studentas4& that) : Zmogus(that.vardas(), that.pavarde()), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
     Studentas4& operator=(const Studentas4& that){
         vard_ = that.vard_;
         pav_ = that.pav_;
@@ -261,12 +225,8 @@ class Studentas4 {
         paz_.clear();
     }
 
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; } 
     inline list<int> pazymiai() const {return paz_;}
     inline int egzaminas() const { return egz_;}
-    inline void setVardas(const string& vardas) { vard_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
     inline void setPazymiai(const list<int>& pazymiai) { paz_ = pazymiai; }
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::list<int>) = mediana2) const;
