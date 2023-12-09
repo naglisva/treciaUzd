@@ -177,16 +177,15 @@ class Studentas : public Zmogus {
 };
 
 
-class Studentas2 {
+class Studentas2 : public Zmogus{
     private:
-    string vard_, pav_;
 	vector <int> paz_;
 	int egz_;
 	string vert_;
     public:
     Studentas2() : egz_(0) {}
-    Studentas2(std::istream& is);
-    Studentas2(const Studentas2& that) : vard_(that.vard_), pav_(that.pav_), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
+    Studentas2(const string& vardas, const string& pavarde) : Zmogus(vardas, pavarde), egz_(0) {}
+    Studentas2(const Studentas2& that) : Zmogus(that.vardas(), that.pavarde()), paz_(that.paz_), egz_(that.egz_), vert_(that.vert_) {}
     Studentas2& operator=(const Studentas2& that){
         vard_ = that.vard_;
         pav_ = that.pav_;
@@ -199,12 +198,8 @@ class Studentas2 {
         paz_.clear();
     }
 
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; } 
     inline vector <int> pazymiai() const {return paz_;}
     inline int egzaminas() const { return egz_;}
-    inline void setVardas(const string& vardas) { vard_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pav_ = pavarde; }
     inline void setPazymiai(const vector<int>& pazymiai) { paz_ = pazymiai; }
     inline void setEgzaminas(int egzaminas) { egz_ = egzaminas; }
     double galBalas(double (*func)(std::vector<int>) = mediana2) const;
